@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-api
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: front-api
+  template:
+    metadata:
+      labels:
+        app: front-api
+    spec:
+      containers:
+        - name: web
+          image: jibranhaseeb/flask-redis:latest
+          # imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
