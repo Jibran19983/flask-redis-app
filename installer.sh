@@ -23,4 +23,6 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 sudo usermod -aG docker $USER
 set -e
 minikube start
-kubectl apply -f ./cluster/flask-deployment.yaml,./cluster/flask-service.yaml,./cluster/redis-deployment.yaml,./cluster/redis-service.yaml
+# git clone https://github.com/Jibran19983/flask-redis-app.git
+# cd flask-redis-app.yaml
+kubectl apply -f cluster
