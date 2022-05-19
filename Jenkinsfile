@@ -10,7 +10,7 @@ pipeline{
 
 	stages {
 
-		stage('Skip the Build') {
+		stage('Skip Build') {
                 steps {
 					script{
 						def result = sh (script: "git log -1 | grep '\\[ci skip\\]'", returnStatus: true) 
