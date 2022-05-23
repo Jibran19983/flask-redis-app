@@ -54,7 +54,7 @@ pipeline{
     		// }
 			script{
 					withKubeConfig([credentialsId: 'Kubernetes', serverUrl: 'https://192.168.49.2:8443']) {
-      				sh 'kubectl apply -f cluster'
+      				sh 'kubectl replace -f cluster'
 
     		}
 
