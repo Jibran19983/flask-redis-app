@@ -54,7 +54,7 @@ pipeline{
     		// }
 			script{
 					withKubeConfig([credentialsId: 'Kubernetes', serverUrl: 'https://192.168.49.2:8443']) {
-      				sh 'kubectl delete -f ./cluster/flask-deployment'
+      				sh 'kubectl delete -f ./cluster/flask-deployment.yaml'
 					sh 'kubectl apply -f cluster'
 
     		}
