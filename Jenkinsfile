@@ -47,14 +47,21 @@ pipeline{
 
 		stage('Deploy the image in kubernetes cluster') {
 			steps{
-				script{
+			// 	script{
+			// 		withKubeConfig([credentialsId: 'Kubernetes', serverUrl: 'https://192.168.49.2:8443']) {
+      		// 		sh 'kubectl delete -f cluster'
+
+    		// }
+			script{
 					withKubeConfig([credentialsId: 'Kubernetes', serverUrl: 'https://192.168.49.2:8443']) {
-      				sh 'kubectl delete -f cluster'
+      				sh 'kubectl patch -f cluster'
 
     		}
 
 			}
+
 			}
+			
 		}
 		
 	}
