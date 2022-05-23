@@ -3,7 +3,7 @@ pipeline{
 	agent any
 
 	environment {
-		// DOCKERHUB_CREDENTIALS=credentials('DockerHub')
+		DOCKERHUB_CREDENTIALS=credentials('DockerHub')
 		// KUBECONFIG="/etc/rancher/rke2/rke3.yaml"
 		TAG = "latest"
 	}
@@ -24,6 +24,27 @@ pipeline{
                     
                 }
             }
+		stage('Building Image') {
+
+			steps {
+				sh "docker build -t jibranhaseeb/flask-redis:${TAG} ."
+			}
+		}
+
+		stage('Login to Docker Hub') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push Image') {
+
+			steps {
+				sh "docker push jibranhaseeb/flask-redis:${TAG}"
+			}
+		}
+
 		stage('Deploy the image in kubernetes cluster') {
 			steps{
 				script{
