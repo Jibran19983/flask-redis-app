@@ -16,6 +16,6 @@ spec:
       containers:
         - name: web
           image: jibranhaseeb/flask-redis:latest
-          # imagePullPolicy: Never
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
