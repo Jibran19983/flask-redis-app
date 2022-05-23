@@ -49,10 +49,7 @@ pipeline{
 			steps{
 				script{
 					withKubeConfig([credentialsId: 'Kubernetes', serverUrl: 'https://192.168.49.2:8443']) {
-      				sh 'kubectl apply -f ./cluster/flask-deployment.yaml'
-					sh 'kubectl apply -f ./cluster/flask-service.yaml'
-					sh 'kubectl apply -f ./cluster/redis-deployment.yaml'
-					sh 'kubectl apply -f ./cluster/redis-service.yaml'
+      				sh 'kubectl delete -f cluster'
 
     		}
 
